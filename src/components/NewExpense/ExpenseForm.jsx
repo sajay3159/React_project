@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     // Managing multiple states.
     // const [userInput, setUserInput] = useState({
     //     enteredTitle: "",
@@ -48,12 +48,12 @@ const ExpenseForm = () => {
 
     function formSubmitHandler(event) {
         event.preventDefault();
-        const expanseData = {
+        const expenseData = {
             title: enteredTitle,
             amount: enteredAmount,
-            date: enteredDate
+            date: new Date(enteredDate)
         }
-        console.log(expanseData);
+        props.onSaveExpenseData(expenseData)
         setEnteredTitle('');
         setEnteredAmount('');
         setEnteredDate('');
